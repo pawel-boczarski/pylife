@@ -98,7 +98,7 @@ class LifeModel(object):
         pass
         
     def display(self):
-        print "Generacja ", self.generation
+        print "Generation ", self.generation
         for i in range(0,self.rows):
             print " ".join(self.array[i])
     
@@ -137,11 +137,11 @@ class LifeButton(gtk.Button):
 class LifeUpperPanel(gtk.VBox):
     def __init__(self):
         super(LifeUpperPanel, self).__init__(None)
-        self.label = gtk.Label("Generacja #0")
+        self.label = gtk.Label("Generation #0")
         self.buttonBox = gtk.HBox(10)
         self.startStopButton = gtk.Button("Start")
-        self.singleStepButton = gtk.Button("Jeden krok")
-        self.cleanButton = gtk.Button("Wyczyść")
+        self.singleStepButton = gtk.Button("Single step")
+        self.cleanButton = gtk.Button("Clean")
         self.buttonBox.pack_start(self.startStopButton)
         self.buttonBox.pack_start(self.singleStepButton)
         self.buttonBox.pack_start(self.cleanButton)
@@ -153,7 +153,7 @@ class LifeUpperPanel(gtk.VBox):
         self.gameState = LifeGtkImpl.EVOLUTION_STOPPED
         
     def setGeneration(self, gen):
-        self.label.set_text("Generacja #" + str(gen))
+        self.label.set_text("Generation #" + str(gen))
         self.generation = gen
         
     def setGameState(self, gameState):
@@ -166,7 +166,7 @@ class LifeUpperPanel(gtk.VBox):
             if self.generation == 0:
                 self.startStopButton.set_label("Start")
             else:
-                self.startStopButton.set_label("Kontynuuj")
+                self.startStopButton.set_label("Continue")
             
     def connectStartStopButton(self, signal, callback, data=None):
         self.startStopButton.connect(signal, callback, data)
